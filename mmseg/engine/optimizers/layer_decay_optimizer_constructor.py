@@ -144,7 +144,7 @@ class LearningRateDecayOptimizerConstructor(DefaultOptimWrapperConstructor):
                         name, self.paramwise_cfg.get('num_layers'))
                     print_log(f'set param {name} as id {layer_id}')
                 elif 'BEiT' in module.backbone.__class__.__name__ or \
-                     'MAE' in module.backbone.__class__.__name__:
+                     'MAE' or 'IJEPA' in module.backbone.__class__.__name__:
                     layer_id = get_layer_id_for_vit(name, num_layers)
                     print_log(f'set param {name} as id {layer_id}')
                 else:

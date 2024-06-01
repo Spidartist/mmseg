@@ -130,6 +130,7 @@ class BaseSegDataset(BaseDataset):
         # if it is not defined
         updated_palette = self._update_palette()
         self._metainfo.update(dict(palette=updated_palette))
+        print(self._metainfo)
 
         # Join paths.
         if self.data_root is not None:

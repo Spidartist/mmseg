@@ -101,6 +101,15 @@ def cocostuff_classes():
         'window-blind', 'window-other', 'wood'
     ]
 
+def benchmark_classes():
+    return [
+        'background', 'damaged'
+    ]
+
+def benchmark_palette():
+    return [
+        [0, 0, 0], [255, 255, 255]
+    ]
 
 def loveda_classes():
     """LoveDA class names for external use."""
@@ -432,6 +441,15 @@ def synapse_classes():
         'liver', 'pancreas', 'spleen', 'stomach'
     ]
 
+def polyp_classes():
+    return [
+        'background', 'non-background',
+    ]
+
+def polyp_palette():
+    return [
+        [0, 0, 0], [255, 255, 255],
+    ]
 
 def lip_classes():
     """LIP class names for external use."""
@@ -491,7 +509,9 @@ dataset_aliases = {
     'lip': ['LIP', 'lip'],
     'mapillary_v1': ['mapillary_v1'],
     'mapillary_v2': ['mapillary_v2'],
-    'bdd100k': ['bdd100k']
+    'bdd100k': ['bdd100k'],
+    'benchmark': ['benchmark'],
+    'polyp': ['polyp']
 }
 
 

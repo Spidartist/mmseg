@@ -8,7 +8,8 @@ from .class_names import (ade_classes, ade_palette, bdd100k_classes,
                           loveda_classes, loveda_palette, potsdam_classes,
                           potsdam_palette, stare_classes, stare_palette,
                           synapse_classes, synapse_palette, vaihingen_classes,
-                          vaihingen_palette, voc_classes, voc_palette)
+                          vaihingen_palette, voc_classes, voc_palette, benchmark_classes,
+                          benchmark_palette)
 # yapf: enable
 from .collect_env import collect_env
 from .get_templates import get_predefined_templates
@@ -67,4 +68,6 @@ __all__ = [
     'MatchMasks',
     'bdd100k_classes',
     'bdd100k_palette',
+    'benchmark_classes',
+    'benchmark_palette'
 ]
