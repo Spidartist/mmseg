@@ -332,11 +332,11 @@ class IJEPA(BaseModule):
         self.init_std = init_std
         # self.apply(self._init_weights)
         # self.fix_init_weight()
-        self.apply(self.init_weights)
+        self.init_weights()
 
     def init_weights(self):
         warnings.warn('\n\nuse Pretrained weight\n\n')
-        warnings.warn(self.init_cfg)
+        # warnings.warn(self.init_cfg)
         checkpoint = _load_checkpoint(
             self.init_cfg['checkpoint'], logger=None, map_location='cpu')
         self.load_state_dict(checkpoint, False)
@@ -431,9 +431,6 @@ class IJEPA(BaseModule):
         )
         pos_embed = pos_embed.permute(0, 2, 3, 1).view(1, -1, dim)
         return pos_embed
-
-    def init_weights(self, pretrained=None):
-        pass
 
 
 # def vit_predictor(**kwargs):

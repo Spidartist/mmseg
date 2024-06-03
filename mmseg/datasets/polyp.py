@@ -12,4 +12,4 @@ class PolypDataset(BaseSegDataset):
 
     def __init__(self,
                  **kwargs) -> None:
-        super().__init__(img_suffix='.png', seg_map_suffix='.png', reduce_zero_label=True, **kwargs)
+        super().__init__(img_suffix='.png', seg_map_suffix='.png', reduce_zero_label=False, **kwargs)

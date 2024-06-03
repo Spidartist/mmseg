@@ -11,8 +11,8 @@ train_pipeline = [
         ratio_range=(0.5, 2.0),
         keep_ratio=True),
     dict(type='RandomCrop', crop_size=crop_size, cat_max_ratio=0.75),
-    dict(type='RandomFlip', prob=0.5),
-    dict(type='PhotoMetricDistortion'),
+    # dict(type='RandomFlip', prob=0.5),
+    # dict(type='PhotoMetricDistortion'),
     dict(type='PackSegInputs')
 ]
 test_pipeline = [
@@ -41,7 +41,7 @@ tta_pipeline = [
 ]
 train_dataloader = dict(
     batch_size=2,
-    num_workers=4,
+    num_workers=6,
     persistent_workers=True,
     sampler=dict(type='InfiniteSampler', shuffle=True),
     dataset=dict(
@@ -53,7 +53,7 @@ train_dataloader = dict(
         pipeline=train_pipeline))
 val_dataloader = dict(
     batch_size=2,
-    num_workers=4,
+    num_workers=6,
     persistent_workers=True,
     sampler=dict(type='DefaultSampler', shuffle=False),
     dataset=dict(
@@ -63,5 +63,7 @@ val_dataloader = dict(
             img_path='public_dataset/TestDataset/Kvasir/images',
             seg_map_path='public_dataset/TestDataset/Kvasir/mask'),
         pipeline=test_pipeline))
+test_dataloader = val_dataloader
 
 val_evaluator = dict(type='IoUMetric', iou_metrics=['mIoU'])
+test_evaluator = val_evaluator
