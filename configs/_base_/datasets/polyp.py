@@ -4,8 +4,8 @@ train_pipeline = [
     dict(type='LoadImageFromFile'),
     dict(type='LoadAnnotations'),
     dict(type='Resize', scale=crop_size, keep_ratio=False),
-    dict(type='RandomFlip', prob=0.5),
-    dict(type='PhotoMetricDistortion'),
+    # dict(type='RandomFlip', prob=0.5),
+    # dict(type='PhotoMetricDistortion'),
     dict(type='PackSegInputs')
 ]
 test_pipeline = [
@@ -17,7 +17,7 @@ test_pipeline = [
 img_ratios = [0.5, 0.75, 1.0, 1.25, 1.5, 1.75]
 train_dataloader = dict(
     batch_size=2,
-    num_workers=4,
+    num_workers=6,
     persistent_workers=True,
     sampler=dict(type='InfiniteSampler', shuffle=True),
     dataset=dict(
@@ -28,7 +28,7 @@ train_dataloader = dict(
         pipeline=train_pipeline))
 val_dataloader = dict(
     batch_size=2,
-    num_workers=4,
+    num_workers=6,
     persistent_workers=True,
     sampler=dict(type='DefaultSampler', shuffle=False),
     dataset=dict(

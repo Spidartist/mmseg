@@ -18,9 +18,17 @@ model = dict(
         drop_path_rate=0.1),
     neck=dict(embed_dim=768, rescales=[4, 2, 1, 0.5]),
     decode_head=dict(
-        in_channels=[768, 768, 768, 768], num_classes=2, channels=768),
-    auxiliary_head=dict(in_channels=768, num_classes=2),
-    test_cfg=dict(mode='slide', crop_size=crop_size, stride=(341, 341)))
+        in_channels=[768, 768, 768, 768], 
+        num_classes=2, 
+        # channels=768,
+        out_channels=1,
+        threshold=0.5),
+    auxiliary_head=dict(
+        in_channels=768, 
+        num_classes=2,
+        out_channels=1,
+        threshold=0.5),)
+    # test_cfg=dict(mode='slide', crop_size=crop_size, stride=(341, 341)))
 
 optimizer = dict(type='AdamW', lr=1e-4, betas=(0.9, 0.999), weight_decay=0.05)
 optim_wrapper = dict(
@@ -47,8 +55,8 @@ param_scheduler = [
 # mixed precision
 fp16 = dict(loss_scale='dynamic')
 
-# By default, models are trained on 8 GPUs with 2 images per GPU
 train_dataloader = dict(batch_size=2)
 val_dataloader = dict(batch_size=2)
 # test_cfg = None
+test_dataloader = val_dataloader    
 work_dir = './work_dirs/tutorial'
